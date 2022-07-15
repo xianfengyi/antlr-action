@@ -1,4 +1,4 @@
-package com.github.pioneeryi.codegen;// Generated from /Users/yixianfeng/Project/pioneeryi/antlr-action/antlr-csv/src/main/resources/CSV.g4 by ANTLR 4.9.2
+// Generated from /Users/yixianfeng/Project/pioneeryi/antlr-action/antlr-csv/src/main/resources/CSV.g4 by ANTLR 4.9.2
 import org.antlr.v4.runtime.Lexer;
 import org.antlr.v4.runtime.CharStream;
 import org.antlr.v4.runtime.Token;

@@ -12,6 +12,6 @@ field
     |              # empty
     ;
 
-TEXT   : ~[,\n\r"]+ ;
+TEXT   : ~[,\n\r]+ ;
 STRING : '"' ('""'|~'"')* '"' ; // quote-quote is an escaped quote
 NEWLINE : '\r'? '\n' ;
