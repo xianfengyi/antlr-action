@@ -12,7 +12,7 @@
     <modules>
         <module>antlr-calculator</module>
         <module>antlr-sql</module>
-        <module>antlr-csv</module>
+        <module>csv-loader</module>
     </modules>
 
     <name>antlr-action</name>
