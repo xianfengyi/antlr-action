@@ -3,11 +3,9 @@ package com.github.pioneeryi;
 import com.github.pioneeryi.codegen.CSVBaseListener;
 import com.github.pioneeryi.codegen.CSVParser;
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
-import org.antlr.v4.runtime.ParserRuleContext;
-import org.antlr.v4.runtime.tree.ErrorNode;
-import org.antlr.v4.runtime.tree.TerminalNode;
 
 /**
  * 通过Listener 加载 CSV 数据.
@@ -15,7 +13,7 @@ import org.antlr.v4.runtime.tree.TerminalNode;
  * @author pioneeryi
  * @since 2022/7/14 21:22
  */
-public class CSVLoaderListener extends CSVBaseListener {
+public class CSVLoader extends CSVBaseListener {
 
     // 存储表头字段
     private List<String> header;
@@ -38,46 +36,32 @@ public class CSVLoaderListener extends CSVBaseListener {
 
     @Override
     public void exitRow(CSVParser.RowContext ctx) {
-    }
-
-    @Override
-    public void enterText(CSVParser.TextContext ctx) {
+        if (header == null) {
+            return;
+        }
+        Map<String, String> oneRow = new LinkedHashMap<>();
+        for (int i = 0; i < header.size(); i++) {
+            oneRow.put(header.get(i), row.get(i));
+        }
+        rows.add(oneRow);
     }
 
     @Override
     public void exitText(CSVParser.TextContext ctx) {
-    }
-
-    @Override
-    public void enterString(CSVParser.StringContext ctx) {
+        row.add(ctx.TEXT().getText());
     }
 
     @Override
     public void exitString(CSVParser.StringContext ctx) {
-    }
-
-    @Override
-    public void enterEmpty(CSVParser.EmptyContext ctx) {
+        row.add(ctx.STRING().getText());
     }
 
     @Override
     public void exitEmpty(CSVParser.EmptyContext ctx) {
+        row.add("");
     }
 
-    @Override
-    public void enterEveryRule(ParserRuleContext ctx) {
+    public List<Map<String, String>> getRows() {
+        return rows;
     }
-
-    @Override
-    public void exitEveryRule(ParserRuleContext ctx) {
-    }
-
-    @Override
-    public void visitTerminal(TerminalNode node) {
-    }
-
-    @Override
-    public void visitErrorNode(ErrorNode node) {
-    }
-
 }
