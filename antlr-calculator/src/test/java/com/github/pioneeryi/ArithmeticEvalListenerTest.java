@@ -12,20 +12,28 @@ import org.junit.Test;
 public class ArithmeticEvalListenerTest {
 
     @Test
-    public void testSimpleExpr() {
-        final String sqlText = "1+2*3+1";
+    public void testSimpleCalculate() {
+        final String expr = "1+1";
+        Assert.assertEquals(2, calculate(expr));
+    }
 
-        CalculatorLexer lexer = new CalculatorLexer(CharStreams.fromString(sqlText));
+    @Test
+    public void testComplexCalculate() {
+        String expr = "6/(1+1)";
+        Assert.assertEquals(3, calculate(expr));
+    }
+
+    private int calculate(String expr) {
+        CalculatorLexer lexer = new CalculatorLexer(CharStreams.fromString(expr));
         CommonTokenStream tokenStream = new CommonTokenStream(lexer);
         CalculatorParser parser = new CalculatorParser(tokenStream);
 
         ParseTree tree = parser.prog();
 
         ParseTreeWalker walker = new ParseTreeWalker();
-        walker.walk(new ArithmeticEvalListener(), tree);
+        ArithmeticEvalListener calculator = new ArithmeticEvalListener();
+        walker.walk(calculator, tree);
 
-        String expected = "(prog (expr (expr (expr 1) + (expr (expr 2) * (expr 3))) + (expr 1)) <missing NEWLINE>)";
-        Assert.assertEquals(expected, tree.toStringTree(parser));
+        return calculator.getResult().intValue();
     }
-
 }
