@@ -1,4 +1,4 @@
-package com.github.pioneeryi.codegen;// Generated from /Users/pioneeryi/Project/pioneer/antlr-example/antlr-calculator/src/main/resources/Calculator.g4 by ANTLR 4.9.1
+package com.github.pioneeryi.codegen;// Generated from /Users/yixianfeng/Project/pioneeryi/antlr-action/antlr-calculator/src/main/resources/Calculator.g4 by ANTLR 4.9.2
 import org.antlr.v4.runtime.tree.ParseTreeListener;
 
 /**
@@ -6,16 +6,6 @@ import org.antlr.v4.runtime.tree.ParseTreeListener;
  * {@link CalculatorParser}.
  */
 public interface CalculatorListener extends ParseTreeListener {
-	/**
-	 * Enter a parse tree produced by {@link CalculatorParser#prog}.
-	 * @param ctx the parse tree
-	 */
-	void enterProg(CalculatorParser.ProgContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link CalculatorParser#prog}.
-	 * @param ctx the parse tree
-	 */
-	void exitProg(CalculatorParser.ProgContext ctx);
 	/**
 	 * Enter a parse tree produced by the {@code parens}
 	 * labeled alternative in {@link CalculatorParser#expr}.

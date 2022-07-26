@@ -12,11 +12,6 @@ import com.github.pioneeryi.codegen.CalculatorParser;
 public class ArithmeticEvalVisitor extends CalculatorBaseVisitor<Integer> {
 
     @Override
-    public Integer visitProg(CalculatorParser.ProgContext ctx) {
-        return visit(ctx.expr());
-    }
-
-    @Override
     public Integer visitMulDiv(CalculatorParser.MulDivContext ctx) {
         int left = visit(ctx.expr(0));
         int right = visit(ctx.expr(1));

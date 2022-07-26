@@ -11,29 +11,25 @@ public class ArithmeticEvalVisitorTest {
 
     @Test
     public void testSimpleCalculate() {
-        final String sqlText = "1+2*3+1";
-
-        CalculatorLexer lexer = new CalculatorLexer(CharStreams.fromString(sqlText));
-        CommonTokenStream tokenStream = new CommonTokenStream(lexer);
-        CalculatorParser parser = new CalculatorParser(tokenStream);
-
-        CalculatorParser.ProgContext tree = parser.prog();
-        ArithmeticEvalVisitor eval = new ArithmeticEvalVisitor();
-        int result = eval.visit(tree);
+        final String expr = "1+2*3+1";
+        int result = calculate(expr);
         Assert.assertEquals(8, result);
     }
 
     @Test
     public void testComplexCalculate() {
-        final String sqlText = "6/(1+1)";
+        final String expr = "6/(1+1)";
+        int result = calculate(expr);
+        Assert.assertEquals(3, result);
+    }
 
-        CalculatorLexer lexer = new CalculatorLexer(CharStreams.fromString(sqlText));
+    private int calculate(String expr) {
+        CalculatorLexer lexer = new CalculatorLexer(CharStreams.fromString(expr));
         CommonTokenStream tokenStream = new CommonTokenStream(lexer);
         CalculatorParser parser = new CalculatorParser(tokenStream);
 
-        CalculatorParser.ProgContext tree = parser.prog();
+        CalculatorParser.ExprContext tree = parser.expr();
         ArithmeticEvalVisitor eval = new ArithmeticEvalVisitor();
-        int result = eval.visit(tree);
-        Assert.assertEquals(3, result);
+        return eval.visit(tree);
     }
 }

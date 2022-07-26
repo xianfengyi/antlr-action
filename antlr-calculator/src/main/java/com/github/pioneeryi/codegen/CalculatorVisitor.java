@@ -1,4 +1,4 @@
-package com.github.pioneeryi.codegen;// Generated from /Users/pioneeryi/Project/pioneer/antlr-example/antlr-calculator/src/main/resources/Calculator.g4 by ANTLR 4.9.1
+package com.github.pioneeryi.codegen;// Generated from /Users/yixianfeng/Project/pioneeryi/antlr-action/antlr-calculator/src/main/resources/Calculator.g4 by ANTLR 4.9.2
 import org.antlr.v4.runtime.tree.ParseTreeVisitor;
 
 /**
@@ -9,12 +9,6 @@ import org.antlr.v4.runtime.tree.ParseTreeVisitor;
  * operations with no return type.
  */
 public interface CalculatorVisitor<T> extends ParseTreeVisitor<T> {
-	/**
-	 * Visit a parse tree produced by {@link CalculatorParser#prog}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitProg(CalculatorParser.ProgContext ctx);
 	/**
 	 * Visit a parse tree produced by the {@code parens}
 	 * labeled alternative in {@link CalculatorParser#expr}.

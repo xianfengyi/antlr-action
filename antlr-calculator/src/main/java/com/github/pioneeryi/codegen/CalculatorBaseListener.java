@@ -1,4 +1,4 @@
-package com.github.pioneeryi.codegen;// Generated from /Users/pioneeryi/Project/pioneer/antlr-example/antlr-calculator/src/main/resources/Calculator.g4 by ANTLR 4.9.1
+package com.github.pioneeryi.codegen;// Generated from /Users/yixianfeng/Project/pioneeryi/antlr-action/antlr-calculator/src/main/resources/Calculator.g4 by ANTLR 4.9.2
 
 import org.antlr.v4.runtime.ParserRuleContext;
 import org.antlr.v4.runtime.tree.ErrorNode;
@@ -10,18 +10,6 @@ import org.antlr.v4.runtime.tree.TerminalNode;
  * of the available methods.
  */
 public class CalculatorBaseListener implements CalculatorListener {
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void enterProg(CalculatorParser.ProgContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitProg(CalculatorParser.ProgContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *

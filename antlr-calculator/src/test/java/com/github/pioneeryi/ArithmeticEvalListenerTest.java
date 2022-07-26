@@ -12,28 +12,64 @@ import org.junit.Test;
 public class ArithmeticEvalListenerTest {
 
     @Test
-    public void testSimpleCalculate() {
+    public void testSimpleAdd() {
         final String expr = "1+1";
         Assert.assertEquals(2, calculate(expr));
     }
 
     @Test
-    public void testComplexCalculate() {
-        String expr = "6/(1+1)";
-        Assert.assertEquals(3, calculate(expr));
+    public void testSimpleSub() {
+        String expr = "6-1";
+        Assert.assertEquals(5, calculate(expr));
+    }
+
+    @Test
+    public void testSimpleMul(){
+        String expr = "2*3";
+        Assert.assertEquals(6, calculate(expr));
+    }
+
+    @Test
+    public void testSimpleDiv(){
+        String expr = "6/3";
+        Assert.assertEquals(2, calculate(expr));
+    }
+
+    @Test
+    public void testSubAdd(){
+        String expr = "6-1+3";
+        Assert.assertEquals(8, calculate(expr));
+    }
+
+    @Test
+    public void testDivMul(){
+        String expr = "6/2*3";
+        Assert.assertEquals(9, calculate(expr));
+    }
+
+    @Test
+    public void testComplex1(){
+        String expr = "6/(1+1)*3";
+        Assert.assertEquals(9, calculate(expr));
+    }
+
+    @Test
+    public void testComplex2(){
+        String expr = "6/2+4/2";
+        Assert.assertEquals(5, calculate(expr));
     }
 
     private int calculate(String expr) {
         CalculatorLexer lexer = new CalculatorLexer(CharStreams.fromString(expr));
-        CommonTokenStream tokenStream = new CommonTokenStream(lexer);
-        CalculatorParser parser = new CalculatorParser(tokenStream);
+        CommonTokenStream tokens = new CommonTokenStream(lexer);
 
-        ParseTree tree = parser.prog();
+        CalculatorParser parser = new CalculatorParser(tokens);
+        ParseTree tree = parser.expr();
 
         ParseTreeWalker walker = new ParseTreeWalker();
-        ArithmeticEvalListener calculator = new ArithmeticEvalListener();
-        walker.walk(calculator, tree);
+        ArithmeticEvalListener listener = new ArithmeticEvalListener();
+        walker.walk(listener, tree);
 
-        return calculator.getResult().intValue();
+        return listener.getResult().intValue();
     }
 }
