@@ -43,15 +43,35 @@ public interface CalculatorListener extends ParseTreeListener {
 	 */
 	void exitAddSub(CalculatorParser.AddSubContext ctx);
 	/**
-	 * Enter a parse tree produced by the {@code int}
+	 * Enter a parse tree produced by the {@code num}
 	 * labeled alternative in {@link CalculatorParser#expr}.
 	 * @param ctx the parse tree
 	 */
-	void enterInt(CalculatorParser.IntContext ctx);
+	void enterNum(CalculatorParser.NumContext ctx);
 	/**
-	 * Exit a parse tree produced by the {@code int}
+	 * Exit a parse tree produced by the {@code num}
 	 * labeled alternative in {@link CalculatorParser#expr}.
 	 * @param ctx the parse tree
 	 */
-	void exitInt(CalculatorParser.IntContext ctx);
+	void exitNum(CalculatorParser.NumContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link CalculatorParser#number}.
+	 * @param ctx the parse tree
+	 */
+	void enterNumber(CalculatorParser.NumberContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link CalculatorParser#number}.
+	 * @param ctx the parse tree
+	 */
+	void exitNumber(CalculatorParser.NumberContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link CalculatorParser#decimal}.
+	 * @param ctx the parse tree
+	 */
+	void enterDecimal(CalculatorParser.DecimalContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link CalculatorParser#decimal}.
+	 * @param ctx the parse tree
+	 */
+	void exitDecimal(CalculatorParser.DecimalContext ctx);
 }

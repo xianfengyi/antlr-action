@@ -31,10 +31,22 @@ public interface CalculatorVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitAddSub(CalculatorParser.AddSubContext ctx);
 	/**
-	 * Visit a parse tree produced by the {@code int}
+	 * Visit a parse tree produced by the {@code num}
 	 * labeled alternative in {@link CalculatorParser#expr}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitInt(CalculatorParser.IntContext ctx);
+	T visitNum(CalculatorParser.NumContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link CalculatorParser#number}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitNumber(CalculatorParser.NumberContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link CalculatorParser#decimal}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitDecimal(CalculatorParser.DecimalContext ctx);
 }

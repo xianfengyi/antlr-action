@@ -20,7 +20,7 @@ public class ArithmeticEvalListener extends CalculatorBaseListener {
      *
      * @return Integer
      */
-    public Integer getResult() {
+    public Number getResult() {
         return this.stack.peek();
     }
 
@@ -44,11 +44,5 @@ public class ArithmeticEvalListener extends CalculatorBaseListener {
         } else {
             this.stack.push(left - right);
         }
-    }
-
-    @Override
-    public void exitInt(CalculatorParser.IntContext ctx) {
-        Integer number = Integer.parseInt(ctx.INT().getText());
-        this.stack.push(number);
     }
 }

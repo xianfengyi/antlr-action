@@ -2,6 +2,7 @@ package com.github.pioneeryi;
 
 import com.github.pioneeryi.codegen.CalculatorBaseVisitor;
 import com.github.pioneeryi.codegen.CalculatorParser;
+import com.github.pioneeryi.codegen.CalculatorParser.NumContext;
 
 /**
  * Implement calculator via visitor model.
@@ -9,12 +10,12 @@ import com.github.pioneeryi.codegen.CalculatorParser;
  * @author pioneeryi
  * @since 2021/7/14 8:18 下午
  */
-public class ArithmeticEvalVisitor extends CalculatorBaseVisitor<Integer> {
+public class ArithmeticEvalVisitor extends CalculatorBaseVisitor<Number> {
 
     @Override
-    public Integer visitMulDiv(CalculatorParser.MulDivContext ctx) {
-        int left = visit(ctx.expr(0));
-        int right = visit(ctx.expr(1));
+    public Number visitMulDiv(CalculatorParser.MulDivContext ctx) {
+        Object left = visit(ctx.expr(0));
+        Object right = visit(ctx.expr(1));
         if (ctx.op.getType() == CalculatorParser.MUL) {
             return left * right;
         }
@@ -22,9 +23,9 @@ public class ArithmeticEvalVisitor extends CalculatorBaseVisitor<Integer> {
     }
 
     @Override
-    public Integer visitAddSub(CalculatorParser.AddSubContext ctx) {
-        int left = visit(ctx.expr(0));
-        int right = visit(ctx.expr(1));
+    public Number visitAddSub(CalculatorParser.AddSubContext ctx) {
+        Object left = visit(ctx.expr(0));
+        Object right = visit(ctx.expr(1));
         if (ctx.op.getType() == CalculatorParser.Add) {
             return left + right;
         }
@@ -32,12 +33,12 @@ public class ArithmeticEvalVisitor extends CalculatorBaseVisitor<Integer> {
     }
 
     @Override
-    public Integer visitInt(CalculatorParser.IntContext ctx) {
-        return Integer.valueOf(ctx.INT().getText());
+    public Number visitNum(NumContext ctx) {
+        return super.visitNum(ctx);
     }
 
     @Override
-    public Integer visitParens(CalculatorParser.ParensContext ctx) {
+    public Number visitParens(CalculatorParser.ParensContext ctx) {
         return visit(ctx.expr());
     }
 }

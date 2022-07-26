@@ -1,7 +1,5 @@
 package com.github.pioneeryi;
 
-import com.github.pioneeryi.codegen.CalculatorLexer;
-import com.github.pioneeryi.codegen.CalculatorParser;
 import org.antlr.v4.runtime.CharStreams;
 import org.antlr.v4.runtime.CommonTokenStream;
 import org.junit.Assert;
