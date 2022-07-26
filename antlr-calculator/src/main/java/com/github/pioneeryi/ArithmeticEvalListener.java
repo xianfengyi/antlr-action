@@ -6,7 +6,7 @@ import java.util.Deque;
 import java.util.LinkedList;
 
 /**
- * 通过Listener 遍历语法树.
+ * Implement calculator via listener model.
  *
  * @author pioneeryi
  * @since 2021/7/15 9:22 上午

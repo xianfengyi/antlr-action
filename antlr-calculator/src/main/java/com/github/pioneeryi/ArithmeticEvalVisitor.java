@@ -4,7 +4,7 @@ import com.github.pioneeryi.codegen.CalculatorBaseVisitor;
 import com.github.pioneeryi.codegen.CalculatorParser;
 
 /**
- * 通过访问者模式，实现计算器.
+ * Implement calculator via visitor model.
  *
  * @author pioneeryi
  * @since 2021/7/14 8:18 下午
