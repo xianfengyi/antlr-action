@@ -11,6 +11,14 @@
 
     <artifactId>antlr-calculator</artifactId>
 
+    <dependencies>
+        <dependency>
+            <groupId>org.apache.velocity.tools</groupId>
+            <artifactId>velocity-tools-generic</artifactId>
+            <version>3.1</version>
+        </dependency>
+    </dependencies>
+
     <build>
         <plugins>
             <plugin>

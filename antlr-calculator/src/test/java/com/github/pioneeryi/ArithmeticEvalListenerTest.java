@@ -1,5 +1,7 @@
 package com.github.pioneeryi;
 
+import com.github.pioneeryi.codegen.CalculatorLexer;
+import com.github.pioneeryi.codegen.CalculatorParser;
 import org.antlr.v4.runtime.CharStreams;
 import org.antlr.v4.runtime.CommonTokenStream;
 import org.antlr.v4.runtime.tree.ParseTree;
@@ -57,7 +59,14 @@ public class ArithmeticEvalListenerTest {
         Assert.assertEquals(5, calculate(expr));
     }
 
-    private int calculate(String expr) {
+    @Test
+    public void testFLoadCalculate(){
+        final String expr = "1.2+2.1";
+        Number result = calculate(expr);
+        Assert.assertEquals(3.3, result.floatValue(),0.001);
+    }
+
+    private Number calculate(String expr) {
         CalculatorLexer lexer = new CalculatorLexer(CharStreams.fromString(expr));
         CommonTokenStream tokens = new CommonTokenStream(lexer);
 
@@ -68,6 +77,6 @@ public class ArithmeticEvalListenerTest {
         ArithmeticEvalListener listener = new ArithmeticEvalListener();
         walker.walk(listener, tree);
 
-        return listener.getResult().intValue();
+        return listener.getResult();
     }
 }
