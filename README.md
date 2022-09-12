@@ -12,7 +12,7 @@ More detail, see: https://zhuanlan.zhihu.com/p/546679086
 
 
 # SQL Parser
-Use antlr develop some SQL tool,such as:
+Use antlr developed some sql tool,such as:
 * Table name and column name extractor
 * Add table name prefix to column
 
