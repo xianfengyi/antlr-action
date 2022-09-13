@@ -1,7 +1,5 @@
 package com.github.pioneeryi;
 
-import com.github.pioneeryi.codegen.SqlBaseLexer;
-import com.github.pioneeryi.codegen.SqlBaseParser;
 import org.antlr.v4.runtime.CharStreams;
 import org.antlr.v4.runtime.CommonTokenStream;
 

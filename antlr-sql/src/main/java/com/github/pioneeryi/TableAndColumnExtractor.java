@@ -32,7 +32,7 @@ public class TableAndColumnExtractor extends SqlBaseBaseVisitor {
     }
 
     @Override
-    public String visitTableIdentifier(SqlBaseParser.TableIdentifierContext ctx) {
+    public String visitTableName(SqlBaseParser.TableNameContext ctx) {
         String tableName = ctx.getChild(0).getText();
         tableNames.add(tableName);
         return tableName;
